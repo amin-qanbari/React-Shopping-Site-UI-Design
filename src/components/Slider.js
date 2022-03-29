@@ -1,6 +1,8 @@
+//material ui
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 
-
+//responsive
+import { mobile } from "../responsive";
 
 import styled from "styled-components";
 import { useState } from "react";
@@ -14,6 +16,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  ${mobile({display: "none"})}
 `;
 
 const Arrow = styled.div`
