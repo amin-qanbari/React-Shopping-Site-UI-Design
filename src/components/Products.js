@@ -14,14 +14,18 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `
-
+const Title = styled.h2`
+padding: 0px 30px;
+`
 const Products = () => {
-  return (
+  return (<>
+    <Title>Popular Products :</Title>
     <Container>
         {popularProducts.map(item => (
             <Product item={item} key={item.id}/>
         ) )}
     </Container>
+    </>
   )
 }
 
