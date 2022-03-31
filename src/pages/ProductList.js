@@ -2,10 +2,6 @@
 import styled from "styled-components";
 
 //components
-import Announcement from "../components/Announcement";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
 
 //responsive
@@ -43,12 +39,10 @@ const Select = styled.select`
 
 const Option = styled.option``;
 
-const ProductList = () => {
+const ProductList = ({item}) => {
   return (
     <Container>
-      <Navbar />
-      <Announcement />
-      <Title>Dresses</Title>
+      <Title>{item.title}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
@@ -84,8 +78,6 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products />
-      <Newsletter />
-      <Footer />
     </Container>
   );
 };
