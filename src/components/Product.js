@@ -25,8 +25,8 @@ const Info = styled.div`
 `;
 
 const Container = styled.div`
-  /* flex: 1; */
-  margin: 5px;
+  flex: 1;
+  margin: 10px;
   min-width: 280px;
   height: 350px;
   display: flex;
@@ -34,9 +34,11 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
-
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 4px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   &:hover ${Info} {
     opacity: 1;
+    border-radius: 2px;
   }
 `;
 
