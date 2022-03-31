@@ -9,6 +9,7 @@ import { useState } from "react";
 
 //data
 import { sliderItems } from "../data";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -74,11 +75,22 @@ const Desc = styled.p`
   font-weight: 500;
   letter-spacing: 3px;
 `;
-const Button = styled.button`
+const Linked = styled(Link)`
   padding: 10px;
+  text-decoration: none;
+  border: 2px solid gray;
+  color: black;
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 2px;
+  font-weight: 500;
+
+  &:hover{
+    background-color: #FC6A67;
+    color: white;
+  }
 `;
 
 const Slider = () => {
@@ -106,10 +118,18 @@ const Slider = () => {
             </ImgContainer>
             <InfoContainer>
               <Title>{item.title}</Title>
-              <Desc>
-                {item.desc}
-              </Desc>
-              <Button>SHOW NOW</Button>
+              <Desc>{item.desc}</Desc>
+              <Linked
+                to={
+                  item.id === 1
+                    ? "/summer"
+                    : item.id === 2
+                    ? "/autumn"
+                    : "/nightwear"
+                }
+              >
+                SHOW NOW
+              </Linked>
             </InfoContainer>
           </Slide>
         ))}

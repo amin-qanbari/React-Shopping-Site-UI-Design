@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //responsive
@@ -34,7 +35,7 @@ const Title = styled.h1`
   margin-bottom: 20px;
 `;
 
-const Button = styled.button`
+const Linked = styled(Link)`
   border: none;
   background-color: white;
   color: gray;
@@ -49,7 +50,17 @@ const CategoryItem = ({ item }) => {
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
+        <Linked
+          to={
+            item.id === 1
+              ? "/shirt"
+              : item.id === 2
+              ? "/t-shirt"
+              : "/lightJacket"
+          }
+        >
+          SHOP NOW
+        </Linked>
       </Info>
     </Container>
   );
