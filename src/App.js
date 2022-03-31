@@ -18,7 +18,7 @@ import LightJacket from "./pages/LightJacket";
 
 
 //react-router-dom
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
         <Route path="/shirt" element={<Shirt />} />
         <Route path="/lightJacket" element={<LightJacket />} />
         <Route path="/productList" element={<ProductList />} />
+        <Route path="/*" element={<Navigate to="/" />} />
 
       </Routes>
       <Newsletter/>
