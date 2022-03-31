@@ -1,4 +1,5 @@
 //styled-components
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 //responsive
@@ -54,10 +55,10 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
+const TextLink = styled.p`
   margin: 5px 0px;
   font-size: 12px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   cursor: pointer;
 `;
 
@@ -70,8 +71,10 @@ const Login = () => {
           <Input placeholder="username" />
           <Input placeholder="password" />
           <Button>LOGIN</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          {/* <TextLink>DO NOT YOU REMEMBER THE PASSWORD?</TextLink> */}
+         <Link to="/register">
+          <TextLink>CREATE A NEW ACCOUNT</TextLink>
+         </Link>
         </Form>
       </Wrapper>
     </Container>
