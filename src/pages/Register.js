@@ -14,6 +14,8 @@ import { mobile } from "../responsive";
 //toast
 import { notify } from "../components/validate/toast";
 
+import image from "../images/register.jpg"
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -21,7 +23,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("./images/register.jpg") center;
+    url(${image}) center;
   background-size: cover;
   display: flex;
   align-items: center;
