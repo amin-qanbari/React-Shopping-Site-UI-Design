@@ -6,6 +6,7 @@ import { notify } from "../components/validate/toast";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { validate } from "../components/validate/validate";
+import image from "../images/signin.webp"
 
 //responsive
 import { mobile } from "../responsive";
@@ -17,7 +18,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("./images/signin.webp") center;
+    url(${image}) center;
   background-size: cover;
   display: flex;
   align-items: center;
