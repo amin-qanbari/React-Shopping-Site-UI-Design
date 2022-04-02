@@ -1,8 +1,6 @@
 //styled-componentes
 import styled from "styled-components";
 
-//components
-import Announcement from "../components/Announcement";
 
 //data api
 import { productList } from "../data";
@@ -136,7 +134,6 @@ const ProductDetail = () => {
 
   return (
     <Container>
-      <Announcement />
       <Wrapper>
         <ImgContainer>
           <Image src={img} />
