@@ -51,15 +51,15 @@ const Input = styled.input`
   ${mobile({ width: "50px" })}
 `;
 
-const Center = styled.div`
-  flex: 1;
-  text-align: center;
-`;
+// const Center = styled.div`
+//   flex: 1;
+//   text-align: center;
+// `;
 
-const Logo = styled.h1`
-  font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
-`;
+// const Logo = styled.h1`
+//   font-weight: bold;
+//   ${mobile({ fontSize: "24px" })}
+// `;
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -91,9 +91,9 @@ const Navbar = () => {
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
-        <Center>
+        {/* <Center>
           <Logo>amin</Logo>
-        </Center>
+        </Center> */}
         <Right>
           <MenuItem>
             <Link to="/">HOME</Link>
