@@ -96,6 +96,9 @@ const Navbar = () => {
         </Center>
         <Right>
           <MenuItem>
+            <Link to="/">HOME</Link>
+          </MenuItem>
+          <MenuItem>
             <Link to="/register">REGISTER</Link>
           </MenuItem>
           <MenuItem>
