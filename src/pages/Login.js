@@ -1,10 +1,14 @@
 //styled-components
+import { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { notify } from "../components/validate/toast";
 import { Link } from "react-router-dom";
-import styled from "styled-components"
+import styled from "styled-components";
+import { validate } from "../components/validate/validate";
 
 //responsive
 import { mobile } from "../responsive";
-
 
 const Container = styled.div`
   width: 100vw;
@@ -13,8 +17,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+    url("./images/signin.webp") center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -25,7 +28,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
-  ${mobile({width: "75%"})}
+  ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
@@ -41,7 +44,7 @@ const Form = styled.form`
 const Input = styled.input`
   flex: 1;
   min-width: 40%;
-  margin: 10px 0;
+  margin-top: 14px;
   padding: 10px;
 `;
 
@@ -52,7 +55,7 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin: 15px 0;
 `;
 
 const TextLink = styled.p`
@@ -62,23 +65,98 @@ const TextLink = styled.p`
   cursor: pointer;
 `;
 
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin: 5px 0;
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+  }
+`;
+
 const Login = () => {
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  useEffect(() => {
+    setErrors(validate(data, "login"));
+  }, [data, touched]);
+
+  const changeHandler = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const touchedHandler = (e) => {
+    setTouched({
+      ...touched,
+      [e.target.name]: true,
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (!Object.keys(errors).length) {
+      notify("You sign in successfully", "success");
+    } else {
+      notify("Invalid data!", "error");
+      setTouched({
+        username: true,
+        password: true,
+      });
+    }
+  };
   return (
     <Container>
-         <Wrapper>
+      <Wrapper>
         <Title>SIGN IN</Title>
-        <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
+        <Form onSubmit={submitHandler}>
+          <Div>
+            <Input
+              style={{border: errors.username && touched.username ? "1px solid red" : ""}}
+              placeholder="username"
+              type="text"
+              name="username"
+              value={data.username}
+              onChange={changeHandler}
+              onFocus={touchedHandler}
+            />
+            {errors.username && touched.username && (
+              <span>{errors.username}</span>
+            )}
+          </Div>
+
+          <Div>
+            <Input
+               style={{border: errors.password && touched.password ? "1px solid red" : ""}}
+              placeholder="password"
+              type="password"
+              name="password"
+              value={data.password}
+              onChange={changeHandler}
+              onFocus={touchedHandler}
+            />
+            {errors.password && touched.password && (
+              <span>{errors.password}</span>
+            )}
+          </Div>
+          <Button type="submit">LOGIN</Button>
           {/* <TextLink>DO NOT YOU REMEMBER THE PASSWORD?</TextLink> */}
-         <Link to="/register">
-          <TextLink>CREATE A NEW ACCOUNT</TextLink>
-         </Link>
+          <Link to="/register">
+            <TextLink>CREATE A NEW ACCOUNT</TextLink>
+          </Link>
         </Form>
       </Wrapper>
+      <ToastContainer />
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
