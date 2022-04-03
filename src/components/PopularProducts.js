@@ -1,11 +1,17 @@
+//usecontext
+import { useContext } from "react"
+
 //styled-compnents
 import styled from "styled-components"
 
 //data
-import { popularProducts } from "../data"
+import { popularProducts, productList } from "../data"
 
 //components
 import Product from "./Product"
+
+//context
+import { searchContext } from "../Context/SearchContextProvider"
 
 
 const Container = styled.div`
@@ -17,11 +23,14 @@ const Container = styled.div`
 const Title = styled.h2`
 padding: 0px 30px;
 `
-const Products = () => {
+const PopularProducts = () => {
+  
+  const searchTerm = useContext(searchContext)
   return (<>
     <Title>Popular Products :</Title>
     <Container>
-        {popularProducts.map(item => (
+        {popularProducts
+        .map(item => (
             <Product item={item} key={item.id}/>
         ) )}
     </Container>
@@ -29,4 +38,4 @@ const Products = () => {
   )
 }
 
-export default Products
+export default PopularProducts
