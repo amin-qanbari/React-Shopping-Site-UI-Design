@@ -2,7 +2,7 @@ import React from 'react'
 import Announcement from '../components/Announcement'
 import Categories from '../components/Categories'
 import Newsletter from '../components/Newsletter'
-import Products from '../components/Products'
+import PopularProducts from '../components/PopularProducts'
 import Slider from '../components/Slider'
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
         <Announcement/>
         <Slider/>
         <Categories/>
-        <Products/>
+        <PopularProducts/>
         <Newsletter/>
     </div>
   )
