@@ -14,6 +14,7 @@ import Tshirt from "./pages/Tshirt";
 import Shirt from "./pages/Shirt";
 import LightJacket from "./pages/LightJacket";
 import ProductDetail from "./pages/ProductDetail";
+import AllProducts from "./components/AllProducts";
 
 
 //react-router-dom
@@ -36,6 +37,7 @@ function App() {
         <Route path="/shirt" element={<Shirt />} />
         <Route path="/lightJacket" element={<LightJacket />} />
         <Route path="/productList" element={<ProductList />} />
+        <Route path="/allProducts" element={<AllProducts />} />
         <Route path="/*" element={<Navigate to="/" />} />
 
       </Routes>
