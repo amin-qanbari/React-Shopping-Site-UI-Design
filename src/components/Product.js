@@ -4,12 +4,14 @@ import {
   SearchOutlined,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
+import { useContext } from "react";
 
 //import Link react-router-dom
 import { Link } from "react-router-dom";
 
 //styled-components
 import styled from "styled-components";
+import { cartContext } from "../Context/CartContextProvider";
 
 const Info = styled.div`
   opacity: 0;
@@ -76,13 +78,14 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  const {dispatch} = useContext(cartContext)
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
       <Info>
-        <Icon>
-          <ShoppingCartOutlined />
+        <Icon onClick={() => dispatch({type:"ADD_ITEM" , payload : item})}>
+          <ShoppingCartOutlined/>
         </Icon>
       <Link to={`/productDetail/${item.id}`}>
         <Icon>
