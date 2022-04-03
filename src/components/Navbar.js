@@ -11,6 +11,7 @@ import styled from "styled-components";
 //react-router-dom
 import { Link } from "react-router-dom";
 import { setSearchContext } from "../Context/SearchContextProvider";
+import { cartContext } from "../Context/CartContextProvider";
 
 const Container = styled.div`
   height: 60px;
@@ -83,6 +84,7 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const setSearchTerm = useContext(setSearchContext);
+  const { state } = useContext(cartContext)
 
   return (
     <Container>
@@ -115,8 +117,8 @@ const Navbar = () => {
             <Link to="/login">SIGN IN</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/cart">
-              <Badge badgeContent={4} color="primary">
+            <Link to="/shopCart">
+              <Badge badgeContent={state.itemsCounter} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
             </Link>
