@@ -1,6 +1,5 @@
 import "./App.css";
 //components
-import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
@@ -16,19 +15,23 @@ import LightJacket from "./pages/LightJacket";
 import ProductDetail from "./pages/ProductDetail";
 import AllProducts from "./components/AllProducts";
 
+//context
+import CartContextProvider from "./Context/CartContextProvider";
 
 //react-router-dom
 import { Navigate, Route, Routes } from "react-router-dom";
+import ShopCart from "./pages/ShopCart";
 
 function App() {
   return (
     <div className="App">
+      <CartContextProvider>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<Cart/>} />
+        <Route path="/shopCart" element={<ShopCart/>} />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
         <Route path="/summer" element={<Summer />} />
         <Route path="/autumn" element={<Autumn />} />
@@ -42,6 +45,7 @@ function App() {
 
       </Routes>
       <Footer/>
+      </CartContextProvider>
     </div>
   );
 }
