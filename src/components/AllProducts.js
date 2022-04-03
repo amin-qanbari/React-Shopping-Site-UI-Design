@@ -1,5 +1,5 @@
 //usecontext
-import { useContext } from "react"
+// import { useContext } from "react"
 
 //styled-compnents
 import styled from "styled-components"
@@ -11,7 +11,7 @@ import { productList } from "../data"
 import Product from "./Product"
 
 //context
-import { searchContext } from "../Context/SearchContextProvider"
+// import { searchContext } from "../Context/SearchContextProvider"
 
 
 const Container = styled.div`
@@ -24,7 +24,7 @@ const Title = styled.h2`
 padding: 0px 30px;
 `
 const AllProducts = () => {
-  const searchTerm = useContext(searchContext)
+  // const searchTerm = useContext(searchContext)
   return (<>
     <Title>All Products :</Title>
     <Container>
