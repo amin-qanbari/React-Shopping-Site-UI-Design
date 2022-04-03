@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { mobile } from "../responsive";
 
 //material UI
@@ -10,6 +10,7 @@ import styled from "styled-components";
 
 //react-router-dom
 import { Link } from "react-router-dom";
+import { setSearchContext } from "../Context/SearchContextProvider";
 
 const Container = styled.div`
   height: 60px;
@@ -74,20 +75,26 @@ const MenuItem = styled.div`
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 
-  a{
+  a {
     text-decoration: none;
     color: black;
   }
 `;
 
 const Navbar = () => {
+  const setSearchTerm = useContext(setSearchContext);
+
   return (
     <Container>
       <Wrapper>
         <Left>
           <Language>EN</Language>
           <SearchContainer>
-            <Input placeholder="Search" />
+            <Input
+              placeholder="Search"
+              type="text"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
@@ -97,6 +104,9 @@ const Navbar = () => {
         <Right>
           <MenuItem>
             <Link to="/">HOME</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/allProducts">ALL PRODUCTS</Link>
           </MenuItem>
           <MenuItem>
             <Link to="/register">REGISTER</Link>
