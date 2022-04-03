@@ -2,16 +2,15 @@
 import styled from "styled-components";
 
 //components
-import Products from "../components/Products";
-
+import PopularProducts from "../components/PopularProducts";
 //responsive
 import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
-const Title = styled.h1`
-  margin: 20px;
-`;
+// const Title = styled.h1`
+//   margin: 20px;
+// `;
 
 const FilterContainer = styled.div`
   display: flex;
@@ -42,11 +41,11 @@ const Option = styled.option``;
 const ProductList = ({item}) => {
   return (
     <Container>
-      <Title>{item.title}</Title>
+      {/* <Title>{item.title}</Title> */}
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select>
+          {/* <Select>
             <Option disabled selected>
               Color
             </Option>
@@ -74,10 +73,10 @@ const ProductList = ({item}) => {
             <Option selected>Newest</Option>
             <Option>Price (asc)</Option>
             <Option>Price (desc)</Option>
-          </Select>
+          </Select> */}
         </Filter>
       </FilterContainer>
-      <Products />
+      <PopularProducts />
     </Container>
   );
 };
