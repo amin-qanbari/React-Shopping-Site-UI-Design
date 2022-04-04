@@ -1,7 +1,6 @@
 //styled-componentes
 import styled from "styled-components";
 
-
 //data api
 import { productList } from "../data";
 
@@ -13,6 +12,12 @@ import { mobile } from "../responsive";
 
 //useparams id
 import { useParams } from "react-router-dom";
+
+//useContext
+import { useContext } from "react";
+
+//cartContext
+import { cartContext } from "../Context/CartContextProvider";
 
 const Container = styled.div``;
 
@@ -87,29 +92,12 @@ const FilterSize = styled.select`
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
-  width: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   ${mobile({ width: "100%" })}
 `;
 
-const AmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-`;
-
-const Amount = styled.span`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 5px;
-`;
 
 const Button = styled.button`
   padding: 15px;
@@ -125,10 +113,10 @@ const Button = styled.button`
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const { state, dispatch } = useContext(cartContext);
 
-  const product = productList[id - 1]
-  const {img , title , desc , price} = product
-  
+  const product = productList[id - 1];
+  const { img, title, desc, price } = product;
 
   console.log(product);
 
@@ -141,9 +129,7 @@ const ProductDetail = () => {
         <InfoContainer>
           <Title>{title}</Title>
 
-          <Desc>
-            {desc}
-          </Desc>
+          <Desc>{desc}</Desc>
           <Price>$ {price} </Price>
           <FilterContainer>
             <Filter>
@@ -164,12 +150,11 @@ const ProductDetail = () => {
             </Filter>
           </FilterContainer>
           <AddContainer>
-            <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
-            </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button
+              onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
+            >
+              ADD TO CART
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
