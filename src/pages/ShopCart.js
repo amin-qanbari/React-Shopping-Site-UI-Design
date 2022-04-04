@@ -119,7 +119,7 @@ const Clear = styled.div`
 `;
 
 const ShopCart = () => {
-  const { state, dispatch } = useContext(cartContext);
+  const { state } = useContext(cartContext);
   return (
     <Container>
       <Wrapper>

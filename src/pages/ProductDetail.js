@@ -4,8 +4,6 @@ import styled from "styled-components";
 //data api
 import { productList } from "../data";
 
-//material ui
-import { Add, Remove } from "@material-ui/icons";
 
 //responsive
 import { mobile } from "../responsive";
@@ -113,7 +111,7 @@ const Button = styled.button`
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const { state, dispatch } = useContext(cartContext);
+  const { dispatch } = useContext(cartContext);
 
   const product = productList[id - 1];
   const { img, title, desc, price } = product;
