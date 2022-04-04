@@ -124,7 +124,9 @@ const Cart = ({ data }) => {
                 <Remove />
               </RemoveContainer>
             ) : (
-              <TrashContainer onClick={() => dispatch({type:"REMOVE_ITEM" , payload : data})}>
+              <TrashContainer
+                onClick={() => dispatch({ type: "REMOVE_ITEM", payload: data })}
+              >
                 <Delete />
               </TrashContainer>
             )}
