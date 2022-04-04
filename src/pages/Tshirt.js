@@ -1,4 +1,9 @@
-import React from "react";
+//usecontext
+import { useContext } from "react";
+
+//context
+import { searchContext } from "../Context/SearchContextProvider";
+
 import styled from "styled-components";
 //data
 import { tshirt } from "../data";
@@ -14,10 +19,24 @@ const Container = styled.div`
 `;
 
 const Tshirt = () => {
+  const searchTerm = useContext(searchContext);
+
   return (
     <Container>
-        {tshirt.map((item) => (
-            <Product key={item.id} item={item} />
+      {tshirt
+        .filter((val) => {
+          if (searchTerm === "") {
+            return val;
+          } else if (
+            val.title.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return val;
+          } else {
+            return false;
+          }
+        })
+        .map((item) => (
+          <Product key={item.id} item={item} />
         ))}
     </Container>
   );
