@@ -17,6 +17,7 @@ import AllProducts from "./components/AllProducts";
 
 //context
 import CartContextProvider from "./Context/CartContextProvider";
+import SearchContextProvider from "./Context/SearchContextProvider";
 
 //react-router-dom
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <CartContextProvider>
+        <SearchContextProvider>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -45,6 +47,7 @@ function App() {
 
       </Routes>
       <Footer/>
+      </SearchContextProvider>
       </CartContextProvider>
     </div>
   );
