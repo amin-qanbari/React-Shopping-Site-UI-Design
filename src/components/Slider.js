@@ -84,7 +84,7 @@ const Linked = styled(Link)`
   background-color: transparent;
   cursor: pointer;
   transition: all 0.15s ease;
-  border-radius: 2px;
+  border-radius: 4px;
   font-weight: 500;
 
   &:hover{
@@ -128,7 +128,7 @@ const Slider = () => {
                     : "/nightwear"
                 }
               >
-                SHOW NOW
+                نمایش بیشتر
               </Linked>
             </InfoContainer>
           </Slide>
