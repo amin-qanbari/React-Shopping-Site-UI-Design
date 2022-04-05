@@ -16,7 +16,6 @@ import { cartContext } from "../Context/CartContextProvider";
 const Container = styled.div`
   height: 60px;
   display: flex;
-  background-color: #efefef;
   ${mobile({ height: "50px" })}
 `;
 
@@ -36,6 +35,7 @@ const Left = styled.div`
 `;
 
 const SearchContainer = styled.div`
+  direction: rtl;
   border: 0.5px solid gray;
   border-radius: 2px;
   display: flex;
@@ -85,7 +85,7 @@ const Navbar = () => {
         <Left>
           <SearchContainer>
             <Input
-              placeholder="Search"
+              placeholder="جستجو"
               type="text"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -95,16 +95,16 @@ const Navbar = () => {
 
         <Right>
           <MenuItem>
-            <Link to="/">HOME</Link>
+            <Link to="/">صفحه اصلی</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/allProducts">ALL PRODUCTS</Link>
+            <Link to="/allProducts">تمام محصولات</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/register">REGISTER</Link>
+            <Link to="/register">ثبت نام</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/login">SIGN IN</Link>
+            <Link to="/login">ورود</Link>
           </MenuItem>
           <MenuItem>
             <Link to="/shopCart">
