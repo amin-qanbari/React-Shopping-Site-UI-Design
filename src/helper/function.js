@@ -13,4 +13,13 @@ const quantityCount = (state , id) => {
     }
 }
 
-export { isInCart , quantityCount}
+
+const discount = (total) => {
+    if(total > 50) {
+       return total * 0.2
+    }else {
+        return 0
+    }
+}
+
+export { isInCart , quantityCount, discount}
