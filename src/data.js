@@ -26,17 +26,17 @@ export const categories = [
   {
     id: 1,
     img: require("./images/categorie1.png"),
-    title: "SHIRT STYLE!",
+    title: "پیراهن",
   },
   {
     id: 2,
     img: require("./images/categorie2.png"),
-    title: "T-SHIRT STYLE!",
+    title: "تیشرت",
   },
   {
     id: 3,
     img: require("./images/categorie3.png"),
-    title: "LIGHT JACKETS",
+    title: "بافت",
   },
 ];
 
