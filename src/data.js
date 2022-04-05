@@ -2,22 +2,22 @@ export const sliderItems = [
   {
     id: 1,
     img: require("./images/1.png"),
-    title: "SUMMER SALE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    title: "فروش تابستانی",
+    desc: "!استایل تابستانه خود را به ما بسپارید",
     bg: "f5fafd",
   },
   {
     id: 2,
     img: require("./images/2.png"),
-    title: "AUTUMN COLLECTION",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    title: "کالکشن پاییزی",
+    desc: "...حس خوب پاییزی را با استایلی متفاوت تجربه کنید",
     bg: "fcf1ed",
   },
   {
     id: 3,
     img: require("./images/3.png"),
-    title: "LOUNGEWEAR LOVE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    title: "لباس خواب",
+    desc: "با ما در خواب خود نیز جذاب دیده شوید",
     bg: "fbf0f4",
   },
 ];
