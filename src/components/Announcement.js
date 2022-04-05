@@ -14,7 +14,7 @@ font-weight: 500;
 const Announcement = () => {
   return (
     <Container>
-        Super Deal! Free Shopping  on Orders Over $50
+        پیشنهاد فوق العاده! 20درصد تخفیف برای سفارش های بالای 50 هزار تومان
     </Container>
   )
 }
