@@ -1,10 +1,8 @@
 //material ui
 import {
-  FavoriteBorderOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
   CheckCircleOutline,
-  Favorite,
 } from "@material-ui/icons";
 import { useContext } from "react";
 
@@ -76,13 +74,35 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
+  position: relative;
+  &:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 80px;
+    background-color: black;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+  }
 
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
   }
-
 `;
 
 const Product = ({ item }) => {
@@ -100,24 +120,18 @@ const Product = ({ item }) => {
             <CheckCircleOutline />
           </Icon>
         ) : (
-          <Icon onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}>
+          <Icon
+            onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
+            data-hover="افزودن به سبد خرید"
+          >
             <ShoppingCartOutlined />
           </Icon>
         )}
         <Link to={`/productDetail/${item.id}`}>
-          <Icon style={{ color: "black" }}>
+          <Icon style={{ color: "black" }} data-hover="جزییات محصول">
             <SearchOutlined />
           </Icon>
         </Link>
-        {isInCart(state, item.id) ? (
-          <Icon>
-            <Favorite />
-          </Icon>
-        ) : (
-          <Icon>
-            <FavoriteBorderOutlined />
-          </Icon>
-        )}
       </Info>
     </Container>
   );
