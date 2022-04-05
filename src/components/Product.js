@@ -3,6 +3,8 @@ import {
   FavoriteBorderOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
+  CheckCircleOutline,
+  Favorite,
 } from "@material-ui/icons";
 import { useContext } from "react";
 
@@ -11,7 +13,12 @@ import { Link } from "react-router-dom";
 
 //styled-components
 import styled from "styled-components";
+
+//context
 import { cartContext } from "../Context/CartContextProvider";
+
+//helper
+import { isInCart } from "../helper/function";
 
 const Info = styled.div`
   opacity: 0;
@@ -75,26 +82,42 @@ const Icon = styled.div`
     background-color: #e9f5f5;
     transform: scale(1.1);
   }
+
 `;
 
 const Product = ({ item }) => {
-  const {dispatch} = useContext(cartContext)
+  const { state, dispatch } = useContext(cartContext);
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
       <Info>
-        <Icon onClick={() => dispatch({type:"ADD_ITEM" , payload : item})}>
-          <ShoppingCartOutlined/>
-        </Icon>
-      <Link to={`/productDetail/${item.id}`}>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
-      </Link>
-        <Icon>
-          <FavoriteBorderOutlined />
-        </Icon>
+        {isInCart(state, item.id) ? (
+          <Icon
+            onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item })}
+            style={{ backgroundColor: "green", color: "white" }}
+          >
+            <CheckCircleOutline />
+          </Icon>
+        ) : (
+          <Icon onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}>
+            <ShoppingCartOutlined />
+          </Icon>
+        )}
+        <Link to={`/productDetail/${item.id}`}>
+          <Icon style={{ color: "black" }}>
+            <SearchOutlined />
+          </Icon>
+        </Link>
+        {isInCart(state, item.id) ? (
+          <Icon>
+            <Favorite />
+          </Icon>
+        ) : (
+          <Icon>
+            <FavoriteBorderOutlined />
+          </Icon>
+        )}
       </Info>
     </Container>
   );
