@@ -16,6 +16,9 @@ import styled from "styled-components";
 //components
 import Cart from "../components/Cart";
 
+//helper
+import { discount } from "../helper/function";
+
 //responsive
 import { mobile } from "../responsive";
 
@@ -141,20 +144,21 @@ const Clear = styled.div`
 
 const ShopCart = () => {
   const { state, dispatch } = useContext(cartContext);
+  console.log(state.selectedItems);
   return (
     <Container>
       <Wrapper>
-        <Title>YOUR BAG</Title>
+        <Title>سبد خرید</Title>
         <Top>
-          <ClearButton onClick={() => dispatch({type:"CLEAR"})}>CLEAR CART</ClearButton>
+          <ClearButton onClick={() => dispatch({type:"CLEAR"})}>حذف سبد خرید</ClearButton>
           <TopTexts>
-            <TopText>Shopping Bag({state.itemsCounter})</TopText>
+            <TopText>تعداد سفارشات({state.itemsCounter})</TopText>
           </TopTexts>
           <CheckoutButton
             type="filled"
             onClick={() => dispatch({ type: "CHECKOUT" })}
           >
-            CHECKOUT NOW
+            پرداخت سفارش
           </CheckoutButton>
         </Top>
         {state.selectedItems.map((item) => (
@@ -163,25 +167,21 @@ const ShopCart = () => {
         {state.itemsCounter > 0 && (
           <Bottom>
             <Summary>
-              <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+              <SummaryTitle>فاکتور</SummaryTitle>
               <SummaryItem>
-                <SummaryItemText>Subtotal</SummaryItemText>
-                <SummaryItemPrice>$ 80</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem>
-                <SummaryItemText>Estimated Shopping</SummaryItemText>
-                <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem>
-                <SummaryItemText>Shopping Discount</SummaryItemText>
-                <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-              </SummaryItem>
-              <SummaryItem type="total">
-                <SummaryItemText>Total</SummaryItemText>
+                <SummaryItemText>جمع کل </SummaryItemText>
                 <SummaryItemPrice>$ {state.total}</SummaryItemPrice>
               </SummaryItem>
+              <SummaryItem>
+                <SummaryItemText>تخفیف</SummaryItemText>
+                <SummaryItemPrice>$ {discount(state.total)}</SummaryItemPrice>
+              </SummaryItem>
+              <SummaryItem type="total">
+                <SummaryItemText>مبلغ پرداختی</SummaryItemText>
+                <SummaryItemPrice>$ {state.total - discount(state.total)}</SummaryItemPrice>
+              </SummaryItem>
               <Button onClick={() => dispatch({ type: "CHECKOUT" })}>
-                CHECKOUT NOW
+                پرداخت سفارش
               </Button>
             </Summary>
           </Bottom>
