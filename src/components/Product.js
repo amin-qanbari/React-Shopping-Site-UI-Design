@@ -2,7 +2,7 @@
 import {
   SearchOutlined,
   ShoppingCartOutlined,
-  CheckCircleOutline,
+  Delete
 } from "@material-ui/icons";
 import { useContext } from "react";
 
@@ -115,9 +115,9 @@ const Product = ({ item }) => {
         {isInCart(state, item.id) ? (
           <Icon
             onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item })}
-            style={{ backgroundColor: "green", color: "white" }}
+            data-hover="حذف از سبد خرید"
           >
-            <CheckCircleOutline />
+            <Delete />
           </Icon>
         ) : (
           <Icon
