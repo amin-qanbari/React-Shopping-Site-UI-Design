@@ -38,14 +38,30 @@ const Top = styled.div`
   padding: 20px;
 `;
 
-const TopButton = styled.button`
+const CheckoutButton = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+  border: none;
+  background-color: black;
+  color: white;
+  &:hover {
+    transform: scale(1.01);
+    background-color: green;
+  }
+
+`;
+
+const ClearButton = styled.button`
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+  &:hover {
+    transform: scale(1.01);
+    background-color: red;
+    color: white;
+  }
 `;
 
 const TopTexts = styled.div`
@@ -53,7 +69,6 @@ const TopTexts = styled.div`
 `;
 const TopText = styled.span`
   text-decoration: underline;
-  cursor: pointer;
   margin: 0px 10px;
 `;
 
@@ -92,7 +107,13 @@ const Button = styled.button`
   padding: 10px;
   background-color: black;
   color: white;
+  cursor: pointer;
   font-weight: 600;
+  transition: all 0.1s ease;
+  &:hover {
+    transform: scale(1.01);
+    background-color: green;
+  }
 `;
 
 const Checkout = styled.div`
@@ -119,18 +140,22 @@ const Clear = styled.div`
 `;
 
 const ShopCart = () => {
-  const { state } = useContext(cartContext);
+  const { state, dispatch } = useContext(cartContext);
   return (
     <Container>
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <ClearButton onClick={() => dispatch({type:"CLEAR"})}>CLEAR CART</ClearButton>
           <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
+            <TopText>Shopping Bag({state.itemsCounter})</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <CheckoutButton
+            type="filled"
+            onClick={() => dispatch({ type: "CHECKOUT" })}
+          >
+            CHECKOUT NOW
+          </CheckoutButton>
         </Top>
         {state.selectedItems.map((item) => (
           <Cart key={item.id} data={item} />
@@ -153,9 +178,11 @@ const ShopCart = () => {
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>Total</SummaryItemText>
-                <SummaryItemPrice>$ 80</SummaryItemPrice>
+                <SummaryItemPrice>$ {state.total}</SummaryItemPrice>
               </SummaryItem>
-              <Button>CHECKOUT NOW</Button>
+              <Button onClick={() => dispatch({ type: "CHECKOUT" })}>
+                CHECKOUT NOW
+              </Button>
             </Summary>
           </Bottom>
         )}
