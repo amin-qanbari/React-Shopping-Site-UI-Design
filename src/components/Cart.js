@@ -43,6 +43,7 @@ const Details = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  direction: rtl;
   justify-content: space-around;
 `;
 
@@ -66,29 +67,48 @@ const ProductAmountContainer = styled.div`
 
 const AddContainer = styled.div`
   color: green;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 100%;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const RemoveContainer = styled.div`
   color: red;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 100%;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
-const TrashContainer = styled.div``;
+const TrashContainer = styled.div`
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 100%;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
 
 const ProductAmount = styled.div`
-  font-size: 24px;
-  margin: 5px;
+  font-size: 20px;
+  margin: 5px 10px;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 0px 8px;
   ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.div`
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
-`;
+  direction: rtl;
 
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
+  ${mobile({ marginBottom: "20px" })}
 `;
 
 const Cart = ({ data }) => {
@@ -101,7 +121,7 @@ const Cart = ({ data }) => {
           <Image src={img} />
           <Details>
             <ProductName>
-              <b>Product:</b> {title}
+              <b>نام محصول :</b> {title}
             </ProductName>
 
             <ProductSize>
@@ -131,10 +151,9 @@ const Cart = ({ data }) => {
               </TrashContainer>
             )}
           </ProductAmountContainer>
-          <ProductPrice>$ {price}</ProductPrice>
+          <ProductPrice>{price} هزار تومان</ProductPrice>
         </PriceDetail>
       </Product>
-      <Hr />
     </Info>
   );
 };
