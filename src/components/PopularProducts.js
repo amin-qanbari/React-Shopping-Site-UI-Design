@@ -13,6 +13,7 @@ import Product from "./Product";
 //context
 import { searchContext } from "../Context/SearchContextProvider";
 
+
 const Container = styled.div`
   padding: 20px;
   display: flex;
@@ -21,12 +22,13 @@ const Container = styled.div`
 `;
 const Title = styled.h2`
   padding: 0px 30px;
+  direction: rtl;
 `;
 const PopularProducts = () => {
   const searchTerm = useContext(searchContext);
   return (
     <>
-      <Title>Popular Products :</Title>
+      <Title>اجناس محبوب :</Title>
       <Container>
         {popularProducts
           .filter((val) => {
