@@ -48,6 +48,8 @@ const CheckoutButton = styled.button`
   border: none;
   background-color: black;
   color: white;
+  border-radius: 4px;
+  transition: all 0.1s ease;
   &:hover {
     transform: scale(1.01);
     background-color: green;
@@ -60,6 +62,8 @@ const ClearButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   background-color: transparent;
+  transition: all 0.2s ease;
+  border-radius: 4px;
   &:hover {
     transform: scale(1.01);
     background-color: red;
@@ -76,6 +80,7 @@ const TopText = styled.span`
 `;
 
 const Bottom = styled.div`
+direction: rtl;
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
@@ -115,6 +120,7 @@ const Button = styled.button`
   transition: all 0.1s ease;
   &:hover {
     transform: scale(1.01);
+    font-size: 16px;
     background-color: green;
   }
 `;
@@ -170,15 +176,15 @@ const ShopCart = () => {
               <SummaryTitle>فاکتور</SummaryTitle>
               <SummaryItem>
                 <SummaryItemText>جمع کل </SummaryItemText>
-                <SummaryItemPrice>$ {state.total}</SummaryItemPrice>
+                <SummaryItemPrice> {state.total} هزار تومان</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>تخفیف</SummaryItemText>
-                <SummaryItemPrice>$ {discount(state.total)}</SummaryItemPrice>
+                <SummaryItemPrice>{discount(state.total)} هزار تومان</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>مبلغ پرداختی</SummaryItemText>
-                <SummaryItemPrice>$ {state.total - discount(state.total)}</SummaryItemPrice>
+                <SummaryItemPrice>{state.total - discount(state.total)} هزار تومان</SummaryItemPrice>
               </SummaryItem>
               <Button onClick={() => dispatch({ type: "CHECKOUT" })}>
                 پرداخت سفارش
