@@ -15,9 +15,12 @@ import styled from "styled-components";
 //responsive
 import { mobile } from "../responsive";
 
+//Link
+import { Link } from "react-router-dom";
+
 const Container = styled.div`
-    display: flex;
-    ${mobile({flexDirection: "column"})}
+  display: flex;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -29,7 +32,7 @@ const Left = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
-  ${mobile({display: "none"})}
+  ${mobile({ display: "none" })}
 `;
 
 const Title = styled.h3`
@@ -69,33 +72,36 @@ const SocialIcon = styled.div`
 const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
+  a{
+    text-decoration: none;
+  }
 `;
 
 const Right = styled.div`
   flex: 1;
   padding: 20px;
-  ${mobile({backgroundColor: "fff8f8"})}
+  ${mobile({ backgroundColor: "fff8f8" })}
 `;
 
 const ContactItem = styled.div`
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-
-`
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+`;
 
 const Payment = styled.img`
-    width: 50%;
-`
+  width: 50%;
+`;
 const Footer = () => {
   return (
     <Container>
       <Left>
         <Logo>AMIN.</Logo>
         <Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+          استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،{" "}
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">
@@ -113,22 +119,22 @@ const Footer = () => {
         </SocialContainer>
       </Left>
       <Center>
-        <Title>Useful Links</Title>
+        <Title>لینک صفحات</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <ListItem><Link to="/login">ورود</Link></ListItem>
+          <ListItem><Link to="/register">ثبت نام</Link></ListItem>
+          <ListItem><Link to="/">صفحه اصلی</Link></ListItem>
+          <ListItem><Link to="/shopCart">سبد خرید</Link></ListItem>
+          <ListItem><Link to="/summer">تابستانی</Link></ListItem>
+          <ListItem><Link to="/autumn">پاییزی</Link></ListItem>
+          <ListItem><Link to="/t-shirt">تی شرت</Link></ListItem>
+          <ListItem><Link to="/shirt">پیراهن</Link></ListItem>
+          <ListItem><Link to="/nightwear">لباس خواب</Link></ListItem>
+          <ListItem><Link to="/allProducts">همه محصولات</Link></ListItem>
         </List>
       </Center>
       <Right>
-        <Title>Contact</Title>
+        <Title>ارتباط با من</Title>
         <ContactItem>
           <Room style={{ marginRight: "10px" }} /> Iran ,Karaj , Dehghan villa
           St
@@ -137,7 +143,8 @@ const Footer = () => {
           <Phone style={{ marginRight: "10px" }} /> +98 918 9250554
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{ marginRight: "10px" }} /> contact@aminqanbarii1992@gmail.com
+          <MailOutline style={{ marginRight: "10px" }} />{" "}
+          aminqanbarii1992@gmail.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
