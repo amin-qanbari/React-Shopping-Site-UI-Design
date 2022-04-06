@@ -59,7 +59,7 @@ const CategoryItem = ({ item }) => {
               : "/lightJacket"
           }
         >
-          SHOP NOW
+          مشاهده بیشتر
         </Linked>
       </Info>
     </Container>
