@@ -1,9 +1,6 @@
 //styled-components
 import styled from "styled-components"
 
-//material ui
-import { Send } from "@material-ui/icons"
-
 //responsive
 import { mobile } from "../responsive"
 
@@ -21,15 +18,9 @@ const Container = styled.div`
 `
 
 const Title = styled.h1`
-    font-size: 70px;
+    font-size: 30px;
     margin-bottom: 20px;
-`
-
-const Desc = styled.div`
-    font-size: 24px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    ${mobile({textAlign: "center"})}
+    direction: rtl;
 `
 
 const InputContainer = styled.div`
@@ -39,20 +30,30 @@ const InputContainer = styled.div`
     display: flex;
     justify-content: space-between;
     border: 1px solid lightgray;
+    direction: rtl;
+    border-radius: 5px;
     ${mobile({width: "80%"})}
 `
 
 const Input = styled.input`
     border: none;
     flex: 8;
-    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    &::placeholder{
+        font-size: 18px;
+    }
 `
 
 const Button = styled.button`
     flex: 1;
     border: none;
-    background-color: teal;
+    background-color: #00BFD6;
     color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
 `
 
 const A = styled.a`
@@ -68,6 +69,30 @@ bottom: 10px;
 left: 20px;
 transition: all 0.2s ease;
 
+
+&:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 80px;
+    background-color: #cecece;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+  }
+
 &:hover{
     transform: scale(1.1);
 }
@@ -78,15 +103,14 @@ const Newsletter = () => {
 
   return (
     <Container>
-        <Title>Newsletter</Title>
-        <Desc>Get timely updates from your favorite products.</Desc>
+        <Title>اطلاع از آخرین محصولات :</Title>
         <InputContainer>
-        <Input placeholder="Your email"/>
+        <Input placeholder=" ایمیل خود را وارد کنید"/>
         <Button>
-            <Send/>
+            ارسال
         </Button>
         </InputContainer>
-        <A href="#top"><KeyboardArrowUp/></A>
+        <A href="#top" data-hover="پرش به بالا"><KeyboardArrowUp/></A>
     </Container>
   )
 }
