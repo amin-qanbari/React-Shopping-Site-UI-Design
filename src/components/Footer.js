@@ -20,6 +20,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
+  direction: rtl;
   ${mobile({ flexDirection: "column" })}
 `;
 
@@ -73,7 +74,7 @@ const SocialIcon = styled.div`
 const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
-  a{
+  a {
     text-decoration: none;
   }
 `;
@@ -122,16 +123,36 @@ const Footer = () => {
       <Center>
         <Title>لینک صفحات</Title>
         <List>
-          <ListItem><Link to="/login">ورود</Link></ListItem>
-          <ListItem><Link to="/register">ثبت نام</Link></ListItem>
-          <ListItem><Link to="/">صفحه اصلی</Link></ListItem>
-          <ListItem><Link to="/shopCart">سبد خرید</Link></ListItem>
-          <ListItem><Link to="/summer">تابستانی</Link></ListItem>
-          <ListItem><Link to="/autumn">پاییزی</Link></ListItem>
-          <ListItem><Link to="/t-shirt">تی شرت</Link></ListItem>
-          <ListItem><Link to="/shirt">پیراهن</Link></ListItem>
-          <ListItem><Link to="/nightwear">لباس خواب</Link></ListItem>
-          <ListItem><Link to="/allProducts">همه محصولات</Link></ListItem>
+          <ListItem>
+            <Link to="/login">ورود</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/register">ثبت نام</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/">صفحه اصلی</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/shopCart">سبد خرید</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/summer">تابستانی</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/autumn">پاییزی</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/t-shirt">تی شرت</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/shirt">پیراهن</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/nightwear">لباس خواب</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/allProducts">همه محصولات</Link>
+          </ListItem>
         </List>
       </Center>
       <Right>
