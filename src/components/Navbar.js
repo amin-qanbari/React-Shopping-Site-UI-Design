@@ -80,7 +80,7 @@ const Navbar = () => {
   const { state } = useContext(cartContext);
 
   return (
-    <Container>
+    <Container id="top">
       <Wrapper>
         <Left>
           <SearchContainer>

@@ -4,3 +4,8 @@ body {
   box-sizing: border-box;
   font-family: 'Vazir', sans-serif;
 }
+
+html{
+  scroll-behavior: smooth;
+
+}

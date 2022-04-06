@@ -7,6 +7,9 @@ import { Send } from "@material-ui/icons"
 //responsive
 import { mobile } from "../responsive"
 
+//material ui
+import { KeyboardArrowUp } from "@material-ui/icons"
+
 const Container = styled.div`
     height: 60vh;
     background-color: #fcf5f5;
@@ -14,6 +17,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 `
 
 const Title = styled.h1`
@@ -51,7 +55,27 @@ const Button = styled.button`
     color: white;
 `
 
+const A = styled.a`
+background-color: #d5d5d5;
+width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 100%;
+position: absolute;
+bottom: 10px;
+left: 20px;
+transition: all 0.2s ease;
+
+&:hover{
+    transform: scale(1.1);
+}
+
+`
+
 const Newsletter = () => {
+
   return (
     <Container>
         <Title>Newsletter</Title>
@@ -62,6 +86,7 @@ const Newsletter = () => {
             <Send/>
         </Button>
         </InputContainer>
+        <A href="#top"><KeyboardArrowUp/></A>
     </Container>
   )
 }
