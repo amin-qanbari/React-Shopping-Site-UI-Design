@@ -1,8 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { mobile } from "../responsive";
 
 //material UI
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import {
+  Search,
+  ShoppingCartOutlined,
+  KeyboardArrowDown,
+} from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
 
 //styled components
@@ -61,23 +65,72 @@ const Right = styled.div`
 
 const MenuItem = styled.div`
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
   cursor: pointer;
   margin-left: 25px;
   transition: all 0.2s ease;
+  position: relative;
+  background-color: aliceblue;
+  direction: rtl;
 
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
-  &:hover {
-    transform: scale(1.1);
-  }
+
   a {
     text-decoration: none;
     color: black;
+  }
+  &:hover{
+    Ul {
+      display: flex;
+    }
+  }
+`;
+
+const Span = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+
+`;
+
+const Ul = styled.ul`
+  width: 100px;
+  position: absolute;
+  direction: rtl;
+  top: 0;
+  list-style-type: none;
+  margin-top: 25px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  transition: transform 0.2s ease;
+  opacity: 0.9;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  display: ${(props) => (props.open ? "flex" : "none")};
+`;
+const Li = styled.li`
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  &:hover {
+    transform: scale(1.2);
+    background-color: red;
   }
 `;
 
 const Navbar = () => {
   const setSearchTerm = useContext(setSearchContext);
   const { state } = useContext(cartContext);
+
+
+
 
   return (
     <Container id="top">
@@ -94,6 +147,32 @@ const Navbar = () => {
         </Left>
 
         <Right>
+          <MenuItem>
+            <Span>
+              محصولات ما
+              <KeyboardArrowDown />
+            </Span>
+            <Ul >
+              <Li>
+                <Link to="">تابستانی</Link>
+              </Li>
+              <Li>
+                <Link to="">پاییزی</Link>
+              </Li>
+              <Li>
+                <Link to="">تی شرت</Link>
+              </Li>
+              <Li>
+                <Link to="">پیراهن</Link>
+              </Li>
+              <Li>
+                <Link to="">لباس خواب</Link>
+              </Li>
+              <Li>
+                <Link to="">همه محصولات</Link>
+              </Li>
+            </Ul>
+          </MenuItem>
           <MenuItem>
             <Link to="/">صفحه اصلی</Link>
           </MenuItem>
