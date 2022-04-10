@@ -4,10 +4,9 @@ import { mobile } from "../responsive";
 //material UI
 import {
   Search,
-  ShoppingCartOutlined,
   KeyboardArrowDown,
 } from "@material-ui/icons";
-import { Badge } from "@material-ui/core";
+
 
 //styled components
 import styled from "styled-components";
@@ -125,7 +124,7 @@ const Li = styled.li`
 
 const Navbar = () => {
   const setSearchTerm = useContext(setSearchContext);
-  const { state } = useContext(cartContext);
+
 
 
 
@@ -183,13 +182,7 @@ const Navbar = () => {
           <MenuItem>
             <Link to="/login">ورود</Link>
           </MenuItem>
-          <MenuItem>
-            <Link to="/shopCart">
-              <Badge badgeContent={state.itemsCounter} color="primary">
-                <ShoppingCartOutlined />
-              </Badge>
-            </Link>
-          </MenuItem>
+          
         </Right>
       </Wrapper>
     </Container>
