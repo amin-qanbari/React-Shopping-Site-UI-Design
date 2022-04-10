@@ -26,8 +26,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 1.5rem;
-  right: 1rem;
+  top: 2.4rem;
+  right: 1.5rem;
   cursor: pointer;
   z-index: 100000;
 `;
