@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
 
-//material-ui/core
-import { Badge } from "@material-ui/core";
-
 //material-ui/icon
 import { ShoppingCartOutlined } from "@material-ui/icons";
 
@@ -47,7 +44,6 @@ const Div = styled.div`
   align-items: center;
   font-weight: 500;
   font-size: 10px;
-
 `;
 
 const Div2 = styled.div`
@@ -55,19 +51,21 @@ const Div2 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
+
+const Span = styled.span``;
 
 const CartCountButton = () => {
   const { state } = useContext(cartContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
-      <Container onClick={() => navigate("/shopCart") }>
+      <Container onClick={() => navigate("/shopCart")}>
         <Div>
-          <Badge badgeContent={state.itemsCounter}></Badge>
+          <Span>{state.itemsCounter}</Span>
         </Div>
         <Div2>
-          <ShoppingCartOutlined style={{fontSize:"16px"}}/>
+          <ShoppingCartOutlined style={{ fontSize: "16px" }} />
         </Div2>
       </Container>
     </div>
