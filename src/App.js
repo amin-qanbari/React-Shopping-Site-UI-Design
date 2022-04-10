@@ -14,6 +14,7 @@ import Shirt from "./pages/Shirt";
 import LightJacket from "./pages/LightJacket";
 import ProductDetail from "./pages/ProductDetail";
 import AllProducts from "./components/AllProducts";
+import CartCountButton from "./components/CartCountButton";
 
 //context
 import CartContextProvider from "./Context/CartContextProvider";
@@ -29,6 +30,7 @@ function App() {
       <CartContextProvider>
         <SearchContextProvider>
       <Navbar/>
+      <CartCountButton/>
       
       <Routes>
         <Route path="/" element={<Home />} />
