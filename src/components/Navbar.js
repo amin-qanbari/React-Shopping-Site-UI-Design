@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { mobile } from "../responsive";
 
 //material UI
@@ -72,7 +72,6 @@ const MenuItem = styled.div`
   margin-left: 25px;
   transition: all 0.2s ease;
   position: relative;
-  background-color: aliceblue;
   direction: rtl;
 
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
@@ -121,7 +120,6 @@ const Li = styled.li`
   width: 100%;
   &:hover {
     transform: scale(1.2);
-    background-color: red;
   }
 `;
 

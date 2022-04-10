@@ -2,7 +2,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 
 //responsive
-import { mobile } from "../responsive";
+// import { mobile } from "../responsive";
 
 import styled from "styled-components";
 import { useState } from "react";
@@ -17,8 +17,15 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({display: "none"})}
-`;
+  
+  @media (max-width: 768px) {
+    height: 60vh;
+  }
+
+  @media (max-width: 380px) {
+    display: none;
+  }
+  `;
 
 const Arrow = styled.div`
   width: 50px;
@@ -48,10 +55,15 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
+
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
+
 `;
 const ImgContainer = styled.div`
   height: 100%;
@@ -60,14 +72,18 @@ const ImgContainer = styled.div`
 
 const Image = styled.img`
   height: 85%;
+
+  @media (max-width: 992px) {
+    height: 500px;
+  }
 `;
 const InfoContainer = styled.div`
-  flex: 1;
+  width: 50%;
   padding: 50px;
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: clamp(2rem, 5vw, 2.5rem);
 `;
 const Desc = styled.p`
   margin: 50px 0px;
