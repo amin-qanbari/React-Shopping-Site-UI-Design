@@ -10,6 +10,9 @@ import { Add, Remove, Delete } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import { cartContext } from "../Context/CartContextProvider";
 
+//helper 
+import { quantityCount } from "../helper/function";
+
 const Info = styled.div`
   flex: 3;
   display: flex;
@@ -112,8 +115,11 @@ const ProductPrice = styled.div`
 `;
 
 const Cart = ({ data }) => {
-  const { dispatch } = useContext(cartContext);
-  const { img, price, title, quantity } = data;
+  const {state , dispatch } = useContext(cartContext);
+  const { img, price, title , id } = data;
+
+
+  
   return (
     <Info>
       <Product>
@@ -136,8 +142,8 @@ const Cart = ({ data }) => {
             >
               <Add />
             </AddContainer>
-            <ProductAmount>{quantity}</ProductAmount>
-            {quantity > 1 ? (
+            <ProductAmount>{quantityCount(state , id)}</ProductAmount>
+            {quantityCount(state , id) > 1 ? (
               <RemoveContainer
                 onClick={() => dispatch({ type: "DECREASE", payload: data })}
               >
