@@ -7,6 +7,7 @@ import {
   Phone,
   Twitter,
   YouTube,
+  Favorite
 } from "@material-ui/icons";
 
 //import style
@@ -92,6 +93,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bottom">
+        <Favorite className="favorite"/>
         <p>made by amin</p>
       </div>
     </footer>
