@@ -2,7 +2,7 @@
 import {
   SearchOutlined,
   ShoppingCartOutlined,
-  Delete
+  Delete,
 } from "@material-ui/icons";
 import { useContext } from "react";
 
@@ -37,7 +37,7 @@ const Info = styled.div`
 const Container = styled.div`
   flex: 1;
   margin: 10px;
-  min-width: 280px;
+  width: 280px;
   height: 350px;
   display: flex;
   align-items: center;
@@ -50,6 +50,18 @@ const Container = styled.div`
     opacity: 1;
     border-radius: 2px;
   }
+
+  @media (max-width: 768px) {
+   height:300px ;
+  }
+
+  @media (max-width: 576px) {
+   height :250px ;
+   max-width: 300px;
+  }
+  @media (max-width: 471px) {
+    
+  }
 `;
 
 const Circle = styled.div`
@@ -58,11 +70,41 @@ const Circle = styled.div`
   border-radius: 50%;
   background-color: white;
   position: absolute;
+
+  @media (max-width: 768px) {
+   width :180px ;
+   height: 180px;
+  }
+
+  @media (max-width: 576px) {
+   width:160px ;
+   height: 160px;
+  }
+
+  @media (max-width: 380px) {
+    width: 140px;
+    height: 140px;
+  }
 `;
 
 const Image = styled.img`
-  height: 75%;
+  width: 200px;
+  height: 200px;
   z-index: 2;
+  @media (max-width: 768px) {
+  width: 180px;
+  height: 180px;
+  }
+
+  @media (max-width: 576px) {
+    width: 160px;
+    height: 160px;
+}
+
+@media (max-width: 380px) {
+  width  :140px ;
+  height: 140px;
+  }
 `;
 
 const Icon = styled.div`
