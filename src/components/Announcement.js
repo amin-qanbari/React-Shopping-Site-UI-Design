@@ -9,7 +9,17 @@ align-items: center;
 justify-content: center;
 font-size: 14px;
 font-weight: 500;
+
+@media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 8px;
+  }
 `
+
+
 
 const Announcement = () => {
   return (
