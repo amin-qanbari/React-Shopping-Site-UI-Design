@@ -8,7 +8,7 @@ import Summer from "./pages/Summer";
 import Autumn from "./pages/Autumn";
 import Nightweare from "./pages/Nightweare";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import Tshirt from "./pages/Tshirt";
 import Shirt from "./pages/Shirt";
 import LightJacket from "./pages/LightJacket";
