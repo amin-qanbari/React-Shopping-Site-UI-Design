@@ -13,16 +13,42 @@ import Product from "./Product";
 //context
 import { searchContext } from "../Context/SearchContextProvider";
 
+const Title = styled.h2`
+  padding: 0px 30px;
+  direction: rtl;
+  @media (max-width: 992px) {
+    font-size: 20px;
+  }
 
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 14px;
+  }
+`;
 const Container = styled.div`
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
-const Title = styled.h2`
-  padding: 0px 30px;
-  direction: rtl;
+  @media (max-width: 992px) {
+  }
+
+  @media (max-width: 768px) {
+  }
+
+  @media (max-width: 576px) {
+  }
+
+  @media (max-width: 380px) {
+    padding: 0px 20px;
+  }
 `;
 const PopularProducts = () => {
   const searchTerm = useContext(searchContext);
