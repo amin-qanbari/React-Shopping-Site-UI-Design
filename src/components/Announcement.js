@@ -14,9 +14,13 @@ font-weight: 500;
     font-size: 12px;
   }
 
-  @media (max-width: 400px) {
-    font-size: 8px;
+  @media (max-width: 576px) {
+    font-size: 10px;
   }
+
+@media (max-width : 380px) {
+  font-size: 8px;
+}
 `
 
 
