@@ -91,10 +91,10 @@ const Footer = () => {
             </div>
           </form>
         </div>
-      </div>
       <div className="bottom">
         <Favorite className="favorite"/>
         <p>made by amin</p>
+      </div>
       </div>
     </footer>
   );
