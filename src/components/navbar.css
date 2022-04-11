@@ -9,7 +9,6 @@
   color: black;
   /* box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23); */
   z-index: 1000;
-  opacity: 0.9;
 }
 
 .brand-name {
@@ -32,65 +31,73 @@
   list-style-type: none;
   margin: 0 1rem;
 }
+
 .navigation-menu li a {
   text-decoration: none;
   display: block;
   width: 100%;
+  color: black;
 }
 
 .hamburger {
-    border: 0;
-    height: 34px;
-    width: 34px;
-    padding: 0.5rem;
-    border-radius: 50%;
-    background-color: #000;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.1s ease-in-out;
-    position: absolute;
-    top: 50%;
-    right: 45px;
-    transform: translateY(-50%);
-    display: none;
+  border: 0;
+  height: 34px;
+  width: 34px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+  position: absolute;
+  top: 50%;
+  right: 45px;
+  transform: translateY(-50%);
+  display: none;
+}
+.hamburger:hover {
+  background-color: lightgray;
+  color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .hamburger:hover {
-    background-color: lightgray;
+
+  .navigation-menu ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 77px);
+    background-color: white;
+    border-top: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .navigation-menu li {
+    text-align: center;
+    margin: 0;
+  }
+
+  .navigation-menu li a {
+    color: black;
+    color: white;
+    width: 100%;
+    padding: 1.5rem 0;
+  }
+  .navigation-menu li:hover {
+    background-color: #eee;
+  }
+  .navigation-menu li a:hover {
     color: #000;
   }
-
-  @media screen and (max-width: 768px) {
-    .hamburger {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .navigation-menu ul {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        flex-direction: column;
-        width: 100%;
-        height: calc(100vh - 77px);
-        background-color: white;
-        border-top: 1px solid black;
-      }
-
-      .navigation-menu li {
-        text-align: center;
-        margin: 0;
-      }
-      .navigation-menu li a {
-        color: black;
-        width: 100%;
-        padding: 1.5rem 0;
-      }
-      .navigation-menu li:hover {
-        background-color: #eee;
-      }
-      .navigation-menu.expanded ul {
-        display: block;
-      }
+  .navigation-menu.expanded ul {
+    display: block;
   }
+}
