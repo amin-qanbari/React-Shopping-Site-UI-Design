@@ -8,15 +8,13 @@ import styled from "styled-components";
 //validate
 import { validate } from "../components/validate/validate";
 
-//responsive
-import { mobile } from "../responsive";
-
 //toast
 import { notify } from "../components/validate/toast";
 
 import image from "../images/register.jpg"
 
 const Container = styled.div`
+direction: rtl;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
@@ -34,12 +32,35 @@ const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
   background-color: white;
-  ${mobile({ width: "75%" })}
+
+  @media (max-width:992px) {
+  width: 60%;
+}
+  @media (max-width:768px) {
+  width: 70%;
+}
+
+@media (max-width:576px) {
+  width: 60%;
+}
+
+@media (max-width:380px) {
+  width: 75%;
+}
+
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 300;
+  @media (max-width:576px) {
+  font-size: 18px;
+  font-weight: 700;
+}
+  @media (max-width:380px) {
+  font-size: 16px;
+  font-weight: 600;
+}
 `;
 
 const Form = styled.form`
@@ -62,15 +83,34 @@ const Div = styled.div`
 const Input = styled.input`
   max-height: 15px;
   flex: 1;
-  min-width: 40%;
+  min-width: 50%;
   margin: 20px 10px 0px 0px;
   padding: 10px;
+  border: 1.5px solid gray;
+  border-radius: 3px;
+
+  &::placeholder{
+    color: #111;
+  }
+  @media (max-width:576px) {
+  width: 95%;
+}
+@media (max-width:380px) {
+ width: 80%;
+}
 
 `;
 
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
+  @media (max-width:576px) {
+  font-size: 13px;
+}
+
+@media (max-width:380px) {
+  font-size: 11px;
+}
 `;
 
 const Button = styled.button`
@@ -80,6 +120,12 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   cursor: pointer;
+  @media (max-width:576px) {
+  width: 50%;
+}
+  @media (max-width:380px) {
+   width: 100%;
+}
 `;
 
 const Register = () => {
@@ -130,13 +176,13 @@ const Register = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>CREATE AN ACCOUNT</Title>
+        <Title>ایجاد حساب کاربری</Title>
         <Form onSubmit={submitHandler}>
         
           <Div>
             <Input
              style={{border: errors.name && touched.name ? "1px solid red" : ""}}
-              placeholder="name"
+              placeholder="نام"
               type="text"
               name="name"
               value={data.name}
@@ -149,7 +195,7 @@ const Register = () => {
           <Div>
           <Input
            style={{border: errors.lastName && touched.lastName ? "1px solid red" : ""}}
-            placeholder="last name"
+            placeholder="نام خانوادگی"
             type="text"
             name="lastName"
             value={data.lastName}
@@ -164,7 +210,7 @@ const Register = () => {
           <Div>
           <Input
             style={{border: errors.username && touched.username ? "1px solid red" : ""}}
-            placeholder="username"
+            placeholder="نام کاربری"
             type="text"
             name="username"
             value={data.username}
@@ -179,7 +225,7 @@ const Register = () => {
           <Div>
           <Input
             style={{border: errors.email && touched.email ? "1px solid red" : ""}}
-            placeholder="email"
+            placeholder="ایمیل"
             type="email"
             name="email"
             value={data.email}
@@ -192,7 +238,7 @@ const Register = () => {
             <Div>  
           <Input
             style={{border: errors.password && touched.password ? "1px solid red" : ""}}
-            placeholder="password"
+            placeholder="رمز عبور"
             type="password"
             name="password"
             value={data.password}
@@ -207,7 +253,7 @@ const Register = () => {
           <Div>    
           <Input
              style={{border: errors.confirmPassword && touched.confirmPassword ? "1px solid red" : ""}}
-            placeholder="confirm password"
+            placeholder="تکرار رمز عبور"
             type="password"
             name="confirmPassword"
             value={data.confirmPassword}
@@ -219,10 +265,9 @@ const Register = () => {
           )}
            </Div> 
           <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            با ایجاد حساب کاربری، با پردازش اطلاعات شخصی خود مطابق با سیاست حفظ  <b>حریم خصوصی</b> موافقت می کنم.
           </Agreement>
-          <Button type="submit">CREATE</Button>
+          <Button type="submit">ساختن حساب</Button>
         </Form>
         <ToastContainer />
       </Wrapper>
