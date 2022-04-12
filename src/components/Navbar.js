@@ -77,6 +77,21 @@ const Navbar = () => {
           <li>
             <Link to="/allProducts">تمام محصولات</Link>
           </li>
+          <li className="li-none">
+            <Link to="/summer">اجناس تابستانی</Link>
+          </li>
+          <li className="li-none">
+            <Link to="/autumn">بافت</Link>
+          </li>
+          <li className="li-none">
+            <Link to="/t-shirt">تی شرت</Link>
+          </li>
+          <li className="li-none">
+            <Link to="/shirt">پیراهن</Link>
+          </li>
+          <li className="li-none">
+            <Link to="/nightwear">لباس خواب</Link>
+          </li>
         </ul>
       </div>
     </nav>
