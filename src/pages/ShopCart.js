@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 //img svg
-import empty from "../images/empty-cart.svg";
+import empty from "../images/201-2018325_img-empty-shopping-cart-gif-clipart.png";
 
 //context
 import { cartContext } from "../Context/CartContextProvider";
@@ -32,6 +32,9 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-weight: 300;
   text-align: center;
+  @media (max-width: 576px) {
+    font-size: 20px;
+  }
 `;
 
 const Top = styled.div`
@@ -54,7 +57,13 @@ const CheckoutButton = styled.button`
     transform: scale(1.01);
     background-color: green;
   }
+  @media (max-width: 576px) {
+    font-size: 10px;
+  }
 
+  @media (max-width: 380px) {
+    font-size: 11px;
+  }
 `;
 
 const ClearButton = styled.button`
@@ -69,9 +78,18 @@ const ClearButton = styled.button`
     background-color: red;
     color: white;
   }
+  @media (max-width: 576px) {
+    font-size: 10px;
+  }
+  @media (max-width: 380px) {
+    font-size: 11px;
+  }
 `;
 
 const TopTexts = styled.div`
+  @media (max-width: 576px) {
+    font-size: 14px;
+  }
   ${mobile({ display: "none" })}
 `;
 const TopText = styled.span`
@@ -80,7 +98,7 @@ const TopText = styled.span`
 `;
 
 const Bottom = styled.div`
-direction: rtl;
+  direction: rtl;
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
@@ -131,11 +149,23 @@ const Checkout = styled.div`
   line-height: 90px;
   h3 {
     color: rgb(18, 129, 18);
+    @media (max-width: 576px) {
+      font-size: 15px;
+    }
+    @media (max-width: 380px) {
+      font-size: 12px;
+    }
   }
   a {
     text-decoration: none;
     color: rgb(91, 91, 238);
     font-weight: bold;
+    @media (max-width: 576px) {
+      font-size: 15px;
+    }
+    @media (max-width: 380px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -143,8 +173,32 @@ const Clear = styled.div`
   text-align: center;
   margin-top: 70px;
 
+  img{
+    width: 200px;
+
+    @media (max-width: 380px) {
+      width: 170px;
+    }
+  }
+
+  p {
+    @media (max-width: 576px) {
+      font-size: 15px;
+    }
+    @media (max-width: 380px) {
+      font-size: 11px;
+    }
+  }
+
   a {
     text-decoration: none;
+    color: rgb(91, 91, 238);
+    @media (max-width: 576px) {
+      font-size: 15px;
+    }
+    @media (max-width: 380px) {
+      font-size: 11px;
+    }
   }
 `;
 
@@ -156,7 +210,9 @@ const ShopCart = () => {
       <Wrapper>
         <Title>سبد خرید</Title>
         <Top>
-          <ClearButton onClick={() => dispatch({type:"CLEAR"})}>حذف سبد خرید</ClearButton>
+          <ClearButton onClick={() => dispatch({ type: "CLEAR" })}>
+            حذف سبد خرید
+          </ClearButton>
           <TopTexts>
             <TopText>تعداد سفارشات({state.itemsCounter})</TopText>
           </TopTexts>
@@ -180,11 +236,15 @@ const ShopCart = () => {
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>تخفیف</SummaryItemText>
-                <SummaryItemPrice>{discount(state.total)} هزار تومان</SummaryItemPrice>
+                <SummaryItemPrice>
+                  {discount(state.total)} هزار تومان
+                </SummaryItemPrice>
               </SummaryItem>
               <SummaryItem type="total">
                 <SummaryItemText>مبلغ پرداختی</SummaryItemText>
-                <SummaryItemPrice>{state.total - discount(state.total)} هزار تومان</SummaryItemPrice>
+                <SummaryItemPrice>
+                  {state.total - discount(state.total)} هزار تومان
+                </SummaryItemPrice>
               </SummaryItem>
               <Button onClick={() => dispatch({ type: "CHECKOUT" })}>
                 پرداخت سفارش
@@ -200,7 +260,7 @@ const ShopCart = () => {
         )}
         {!state.checkout && state.itemsCounter === 0 && (
           <Clear>
-            <img src={empty} style={{ width: "21vw" }} alt="empty-card" />
+            <img src={empty} alt="empty-card" />
             <h5>سبد خرید شما خالی است!</h5>
             <p>می‌توانید برای مشاهده محصولات به صفحه زیر بروید:</p>
             <Link to="/">بازگشت به صفحه اصلی</Link>
