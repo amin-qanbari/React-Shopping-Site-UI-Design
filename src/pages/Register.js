@@ -76,7 +76,7 @@ const Div = styled.div`
     color: red;
     font-size: 12px;
     font-weight: 500;
-    margin-top: 5px;
+    margin: 5px 12px 0px 0px;
   }
 `;
 

@@ -97,7 +97,7 @@ const Div = styled.div`
   flex-direction: column;
 
   span {
-    margin: 5px 0;
+    margin: 5px 6px 0px 0px;
     color: red;
     font-size: 12px;
     font-weight: 500;
