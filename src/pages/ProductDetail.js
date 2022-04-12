@@ -4,7 +4,6 @@ import styled from "styled-components";
 //data api
 import { productList } from "../data";
 
-
 //responsive
 import { mobile } from "../responsive";
 
@@ -22,32 +21,102 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection: "column" })}
+  @media (max-width: 992px) {
+    padding: 40px;
+  }
+  @media (max-width: 768px) {
+    padding: 20px 0px;
+  }
+  @media (max-width: 576px) {
+    padding: 15px 0px;
+    flex-direction: column;
+  }
+  @media (max-width: 380px) {
+    padding: 10px;
+    flex-direction: column;
+  }
 `;
 
 const ImgContainer = styled.div`
-  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Image = styled.img`
-  width: 100%;
-  height: 90vh;
-  object-fit: cover;
-  ${mobile({ height: "40vh" })}
+  height: 70vh;
+  object-fit: contain;
+
+  @media (max-width: 1200px) {
+    width: 400px;
+    height: 60vh;
+  }
+  @media (max-width: 992px) {
+    width: 350px;
+    height: 50vh;
+  }
+  @media (max-width: 768px) {
+    width: 300px;
+    height: 45vh;
+  }
+  @media (max-width: 576px) {
+    width: 250px;
+    height: 35vh;
+  }
+  @media (max-width: 380px) {
+    height: 37vh;
+  }
 `;
 
 const InfoContainer = styled.div`
-  flex: 1;
-  padding: 0px 50px;
+  padding: 0px 30px;
+  direction: rtl;
+  @media (max-width: 992px) {
+    padding: 0px 25px;
+  }
+  @media (max-width: 768px) {
+    padding: 0px 20px;
+  }
+  @media (max-width: 576px) {
+    padding: 0px 15px;
+  }
+  @media (max-width: 380px) {
+    padding: 0px 10px;
+  }
   ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
   font-weight: 200;
+  @media (max-width: 992px) {
+    font-size: 30px;
+  }
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+  @media (max-width: 576px) {
+    font-size: 23px;
+  }
+  @media (max-width: 380px) {
+    font-size: 20px;
+  }
 `;
 
 const Desc = styled.p`
   margin: 20px 0px;
+  text-align: justify;
+  @media (max-width: 992px) {
+    font-size: 15px;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media (max-width: 576px) {
+    font-size: 12px;
+  }
+  @media (max-width: 380px) {
+    font-size: 10px;
+  }
 `;
 
 const Price = styled.span`
@@ -56,7 +125,7 @@ const Price = styled.span`
 `;
 
 const FilterContainer = styled.div`
-  width: 50%;
+  width: 100%;
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
@@ -82,20 +151,12 @@ const FilterColor = styled.div`
   cursor: pointer;
 `;
 
-const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-`;
-
-const FilterSizeOption = styled.option``;
-
 const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   ${mobile({ width: "100%" })}
 `;
-
 
 const Button = styled.button`
   padding: 15px;
@@ -131,27 +192,17 @@ const ProductDetail = () => {
           <Price>$ {price} </Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
+              <FilterTitle>رنگ</FilterTitle>
               <FilterColor color="black" />
               <FilterColor color="darkblue" />
               <FilterColor color="gray" />
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-              </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <Button
               onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
             >
-              ADD TO CART
+              افزودن به سبد خرید
             </Button>
           </AddContainer>
         </InfoContainer>
