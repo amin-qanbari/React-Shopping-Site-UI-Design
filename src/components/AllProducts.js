@@ -26,7 +26,7 @@ const AllProducts = () => {
   const searchTerm = useContext(searchContext);
   return (
     <>
-      <Title>All Products :</Title>
+      <Title dir="rtl">همه محصولات کالکشن :</Title>
       <Container>
         {productList
           .filter((val) => {
