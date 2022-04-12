@@ -6,12 +6,10 @@ import { notify } from "../components/validate/toast";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { validate } from "../components/validate/validate";
-import image from "../images/signin.webp"
-
-//responsive
-import { mobile } from "../responsive";
+import image from "../images/signin.webp";
 
 const Container = styled.div`
+  direction: rtl;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
@@ -26,10 +24,23 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 25%;
+  width: 30%;
   padding: 20px;
   background-color: white;
-  ${mobile({ width: "75%" })}
+
+  @media (max-width:992px) {
+  width: 35%;
+}
+  @media (max-width:768px) {
+  width: 45%;
+}
+  @media (max-width:576px) {
+  width: 60%;
+}
+
+  @media (max-width: 380px) {
+    width: 75%;
+  }
 `;
 
 const Title = styled.h1`
@@ -47,6 +58,12 @@ const Input = styled.input`
   min-width: 40%;
   margin-top: 14px;
   padding: 10px;
+  border: 1.5px solid gray;
+  border-radius: 3px;
+
+  &::placeholder{
+    color: #111;
+  }
 `;
 
 const Button = styled.button`
@@ -55,8 +72,15 @@ const Button = styled.button`
   padding: 15px 20px;
   background-color: teal;
   color: white;
+  font-size: 15px;
   cursor: pointer;
   margin: 15px 0;
+  border-radius: 2px;
+
+  @media (max-width: 380px) {
+   font-size: 14px;
+  }
+  
 `;
 
 const TextLink = styled.p`
@@ -117,12 +141,15 @@ const Login = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>ورود</Title>
         <Form onSubmit={submitHandler}>
           <Div>
             <Input
-              style={{border: errors.username && touched.username ? "1px solid red" : ""}}
-              placeholder="username"
+              style={{
+                border:
+                  errors.username && touched.username ? "1px solid red" : "",
+              }}
+              placeholder="نام کاربری"
               type="text"
               name="username"
               value={data.username}
@@ -136,8 +163,11 @@ const Login = () => {
 
           <Div>
             <Input
-               style={{border: errors.password && touched.password ? "1px solid red" : ""}}
-              placeholder="password"
+              style={{
+                border:
+                  errors.password && touched.password ? "1px solid red" : "",
+              }}
+              placeholder="رمز عبور"
               type="password"
               name="password"
               value={data.password}
@@ -148,7 +178,7 @@ const Login = () => {
               <span>{errors.password}</span>
             )}
           </Div>
-          <Button type="submit">LOGIN</Button>
+          <Button type="submit">ورود</Button>
           {/* <TextLink>DO NOT YOU REMEMBER THE PASSWORD?</TextLink> */}
           <Link to="/register">
             <TextLink>CREATE A NEW ACCOUNT</TextLink>
