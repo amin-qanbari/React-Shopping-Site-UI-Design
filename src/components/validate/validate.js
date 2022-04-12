@@ -4,16 +4,16 @@ export const validate = (data, type) => {
 
   //username
   if (!data.username) {
-    errors.username = "Username required";
+    errors.username = "لطفا نام کاربری را وارد کنید";
   } else {
     delete errors.username;
   }
 
   //password
   if (!data.password) {
-    errors.password = "password required";
+    errors.password = "لطفا رمز عبور را وارد کنید";
   } else if (data.password.length < 6) {
-    errors.password = "password must be more 6 character";
+    errors.password = "رمز عبور باید بیشتر از 6 کاراکتر باشد";
   } else {
     delete errors.password;
   }
@@ -24,31 +24,31 @@ export const validate = (data, type) => {
 
     //name
     if(!data.name) {
-        errors.name = "Name required" ;
+        errors.name = "لطفا نام را وارد کنید" ;
     } else {
         delete errors.name
     }
 
     //lastName
     if(!data.lastName) {
-        errors.lastName = "Last name required" ;
+        errors.lastName = "لطفا نام خانوادگی را وارد کنید" ;
     } else {
         delete errors.lastName
     }
 
   //email
   if (!data.email) {
-    errors.email = "Email required";
+    errors.email = "لطفا نام ایمیل را وارد کنید";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(data.email)) {
-    errors.email = "Email address is invalid";
+    errors.email = "آدرس ایمیل معتبر نیست";
   } else {
     delete errors.email;
   }
     //confirmPassword
     if (!data.confirmPassword) {
-      errors.confirmPassword = "confirm password required";
+      errors.confirmPassword = "تکرار رمز عبور الزامی است";
     } else if (data.confirmPassword !== data.password) {
-      errors.confirmPassword = "confirm password do not match";
+      errors.confirmPassword = "عدم تطابق رمز عبور";
     } else {
       delete errors.confirmPassword;
     }
