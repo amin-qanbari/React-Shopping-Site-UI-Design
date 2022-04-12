@@ -21,7 +21,7 @@ import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 
 //cart action
-import { checkout , clear } from "../Redux/Cart/cartAction";
+import { checkout, clear } from "../Redux/Cart/cartAction";
 
 const Container = styled.div``;
 
@@ -218,7 +218,7 @@ const ShopCart = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>سبد خرید</Title>
+        {state.itemsCounter > 0 && <Title>سبد خرید</Title>}
         <Top>
           {state.itemsCounter > 0 && (
             <ClearButton onClick={() => dispatch(clear())}>
@@ -231,10 +231,7 @@ const ShopCart = () => {
             </TopTexts>
           )}
           {state.itemsCounter > 0 && (
-            <CheckoutButton
-              type="filled"
-              onClick={() => dispatch(checkout())}
-            >
+            <CheckoutButton type="filled" onClick={() => dispatch(checkout())}>
               پرداخت سفارش
             </CheckoutButton>
           )}
@@ -262,9 +259,7 @@ const ShopCart = () => {
                   {state.total - discount(state.total)} هزار تومان
                 </SummaryItemPrice>
               </SummaryItem>
-              <Button onClick={() => dispatch(checkout())}>
-                پرداخت سفارش
-              </Button>
+              <Button onClick={() => dispatch(checkout())}>پرداخت سفارش</Button>
             </Summary>
           </Bottom>
         )}
