@@ -16,8 +16,6 @@ import ProductDetail from "./pages/ProductDetail";
 import AllProducts from "./components/AllProducts";
 import CartCountButton from "./components/CartCountButton";
 
-//context
-import CartContextProvider from "./Context/CartContextProvider";
 import SearchContextProvider from "./Context/SearchContextProvider";
 
 //react-router-dom
@@ -27,7 +25,6 @@ import ShopCart from "./pages/ShopCart";
 function App() {
   return (
     <div className="App">
-      <CartContextProvider>
         <SearchContextProvider>
       <Navbar/>
       <CartCountButton/>
@@ -51,7 +48,6 @@ function App() {
       </Routes>
       <Footer/>
       </SearchContextProvider>
-      </CartContextProvider>
     </div>
   );
 }

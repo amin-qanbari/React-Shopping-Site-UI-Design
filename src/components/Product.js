@@ -4,7 +4,6 @@ import {
   ShoppingCartOutlined,
   Delete,
 } from "@material-ui/icons";
-import { useContext } from "react";
 
 //import Link react-router-dom
 import { Link } from "react-router-dom";
@@ -12,11 +11,15 @@ import { Link } from "react-router-dom";
 //styled-components
 import styled from "styled-components";
 
-//context
-import { cartContext } from "../Context/CartContextProvider";
 
 //helper
 import { isInCart } from "../helper/function";
+
+//useSelector
+import { useSelector , useDispatch } from "react-redux";
+
+//cart action
+import { removeItem , addItem } from "../Redux/Cart/cartAction";
 
 const Info = styled.div`
   opacity: 0;
@@ -148,7 +151,8 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
-  const { state, dispatch } = useContext(cartContext);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   return (
     <Container>
       <Circle />
@@ -156,14 +160,14 @@ const Product = ({ item }) => {
       <Info>
         {isInCart(state, item.id) ? (
           <Icon
-            onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item })}
+            onClick={() => dispatch(removeItem(item))}
             data-hover="حذف از سبد خرید"
           >
             <Delete />
           </Icon>
         ) : (
           <Icon
-            onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
+            onClick={() => dispatch(addItem(item))}
             data-hover="افزودن به سبد خرید"
           >
             <ShoppingCartOutlined />

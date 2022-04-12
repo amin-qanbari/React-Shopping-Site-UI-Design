@@ -1,15 +1,9 @@
-//usecontext
-import { useContext } from "react";
-
 //Link react-router-dom
 import { Link } from "react-router-dom";
 
 //img
 import empty from "../images/201-2018325_img-empty-shopping-cart-gif-clipart.png";
-import checkout from "../images/checkout.png";
-
-//context
-import { cartContext } from "../Context/CartContextProvider";
+import checkoutIMG from "../images/checkout.png";
 
 //styled-components
 import styled from "styled-components";
@@ -22,6 +16,12 @@ import { discount } from "../helper/function";
 
 //responsive
 import { mobile } from "../responsive";
+
+//useSelector and useDispatch
+import { useDispatch, useSelector } from "react-redux";
+
+//cart action
+import { checkout , clear } from "../Redux/Cart/cartAction";
 
 const Container = styled.div``;
 
@@ -212,7 +212,8 @@ const Clear = styled.div`
 `;
 
 const ShopCart = () => {
-  const { state, dispatch } = useContext(cartContext);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   console.log(state.selectedItems);
   return (
     <Container>
@@ -220,7 +221,7 @@ const ShopCart = () => {
         <Title>سبد خرید</Title>
         <Top>
           {state.itemsCounter > 0 && (
-            <ClearButton onClick={() => dispatch({ type: "CLEAR" })}>
+            <ClearButton onClick={() => dispatch(clear())}>
               حذف سبد خرید
             </ClearButton>
           )}
@@ -232,7 +233,7 @@ const ShopCart = () => {
           {state.itemsCounter > 0 && (
             <CheckoutButton
               type="filled"
-              onClick={() => dispatch({ type: "CHECKOUT" })}
+              onClick={() => dispatch(checkout())}
             >
               پرداخت سفارش
             </CheckoutButton>
@@ -261,7 +262,7 @@ const ShopCart = () => {
                   {state.total - discount(state.total)} هزار تومان
                 </SummaryItemPrice>
               </SummaryItem>
-              <Button onClick={() => dispatch({ type: "CHECKOUT" })}>
+              <Button onClick={() => dispatch(checkout())}>
                 پرداخت سفارش
               </Button>
             </Summary>
@@ -269,7 +270,7 @@ const ShopCart = () => {
         )}
         {state.checkout && (
           <Checkout>
-            <img src={checkout} alt="checkout" />
+            <img src={checkoutIMG} alt="checkout" />
             <h3> خرید شما با موفقیت انجام شد </h3>
             <Link to="/">بازگشت به صفحه اصلی</Link>
           </Checkout>

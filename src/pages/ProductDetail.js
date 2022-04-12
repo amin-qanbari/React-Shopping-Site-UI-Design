@@ -10,11 +10,13 @@ import { mobile } from "../responsive";
 //useparams id
 import { useParams } from "react-router-dom";
 
-//useContext
-import { useContext } from "react";
+//useSelector and useDispatch
+import { useDispatch } from "react-redux";
 
-//cartContext
-import { cartContext } from "../Context/CartContextProvider";
+//cartAction
+import { addItem } from "../Redux/Cart/cartAction";
+
+
 
 const Container = styled.div``;
 
@@ -172,7 +174,7 @@ const Button = styled.button`
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const { dispatch } = useContext(cartContext);
+  const dispatch = useDispatch()
 
   const product = productList[id - 1];
   const { img, title, desc, price } = product;
@@ -200,7 +202,7 @@ const ProductDetail = () => {
           </FilterContainer>
           <AddContainer>
             <Button
-              onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
+              onClick={() => dispatch(addItem(product))}
             >
               افزودن به سبد خرید
             </Button>

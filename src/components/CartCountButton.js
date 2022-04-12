@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-
 //material-ui/icon
 import { ShoppingCartOutlined } from "@material-ui/icons";
 
@@ -9,8 +7,10 @@ import styled from "styled-components";
 //react-router-dom
 import { useNavigate } from "react-router-dom";
 
-//context
-import { cartContext } from "../Context/CartContextProvider";
+
+
+//useSelector
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 30px;
@@ -62,7 +62,7 @@ const Div2 = styled.div`
 const Span = styled.span``;
 
 const CartCountButton = () => {
-  const { state } = useContext(cartContext);
+  const state = useSelector((state) => state);
   const navigate = useNavigate();
   return (
     <div>

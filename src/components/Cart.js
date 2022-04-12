@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-
 //styled-components
 import styled from "styled-components";
 
@@ -8,10 +6,15 @@ import { Add, Remove, Delete } from "@material-ui/icons";
 
 //responsive
 import { mobile } from "../responsive";
-import { cartContext } from "../Context/CartContextProvider";
 
 //helper 
 import { quantityCount } from "../helper/function";
+
+//useSelector and useDispatch
+import { useDispatch, useSelector } from "react-redux";
+
+//cart action
+import { removeItem , increase , decrease  } from "../Redux/Cart/cartAction";
 
 const Info = styled.div`
   flex: 3;
@@ -115,7 +118,8 @@ const ProductPrice = styled.div`
 `;
 
 const Cart = ({ data }) => {
-  const {state , dispatch } = useContext(cartContext);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const { img, price, title , id } = data;
 
 
@@ -138,20 +142,20 @@ const Cart = ({ data }) => {
         <PriceDetail>
           <ProductAmountContainer>
             <AddContainer
-              onClick={() => dispatch({ type: "INCREASE", payload: data })}
+              onClick={() => dispatch(increase(data))}
             >
               <Add />
             </AddContainer>
             <ProductAmount>{quantityCount(state , id)}</ProductAmount>
             {quantityCount(state , id) > 1 ? (
               <RemoveContainer
-                onClick={() => dispatch({ type: "DECREASE", payload: data })}
+                onClick={() => dispatch(decrease(data))}
               >
                 <Remove />
               </RemoveContainer>
             ) : (
               <TrashContainer
-                onClick={() => dispatch({ type: "REMOVE_ITEM", payload: data })}
+                onClick={() => dispatch(removeItem(data))}
               >
                 <Delete />
               </TrashContainer>
