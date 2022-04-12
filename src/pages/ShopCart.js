@@ -4,8 +4,9 @@ import { useContext } from "react";
 //Link react-router-dom
 import { Link } from "react-router-dom";
 
-//img svg
+//img
 import empty from "../images/201-2018325_img-empty-shopping-cart-gif-clipart.png";
+import checkout from "../images/checkout.png";
 
 //context
 import { cartContext } from "../Context/CartContextProvider";
@@ -145,8 +146,16 @@ const Button = styled.button`
 
 const Checkout = styled.div`
   text-align: center;
-  margin-top: 200px;
-  line-height: 90px;
+
+  img {
+    width: 270px;
+    @media (max-width: 576px) {
+      width: 220px;
+    }
+    @media (max-width: 380px) {
+      width: 170px;
+    }
+  }
   h3 {
     color: rgb(18, 129, 18);
     @media (max-width: 576px) {
@@ -171,9 +180,9 @@ const Checkout = styled.div`
 
 const Clear = styled.div`
   text-align: center;
-  margin-top: 70px;
+  margin-top: 10px;
 
-  img{
+  img {
     width: 200px;
 
     @media (max-width: 380px) {
@@ -210,18 +219,24 @@ const ShopCart = () => {
       <Wrapper>
         <Title>سبد خرید</Title>
         <Top>
-          <ClearButton onClick={() => dispatch({ type: "CLEAR" })}>
-            حذف سبد خرید
-          </ClearButton>
-          <TopTexts>
-            <TopText>تعداد سفارشات({state.itemsCounter})</TopText>
-          </TopTexts>
-          <CheckoutButton
-            type="filled"
-            onClick={() => dispatch({ type: "CHECKOUT" })}
-          >
-            پرداخت سفارش
-          </CheckoutButton>
+          {state.itemsCounter > 0 && (
+            <ClearButton onClick={() => dispatch({ type: "CLEAR" })}>
+              حذف سبد خرید
+            </ClearButton>
+          )}
+          {state.itemsCounter > 0 && (
+            <TopTexts>
+              <TopText>تعداد سفارشات({state.itemsCounter})</TopText>
+            </TopTexts>
+          )}
+          {state.itemsCounter > 0 && (
+            <CheckoutButton
+              type="filled"
+              onClick={() => dispatch({ type: "CHECKOUT" })}
+            >
+              پرداخت سفارش
+            </CheckoutButton>
+          )}
         </Top>
         {state.selectedItems.map((item) => (
           <Cart key={item.id} data={item} />
@@ -254,6 +269,7 @@ const ShopCart = () => {
         )}
         {state.checkout && (
           <Checkout>
+            <img src={checkout} alt="checkout" />
             <h3> خرید شما با موفقیت انجام شد </h3>
             <Link to="/">بازگشت به صفحه اصلی</Link>
           </Checkout>
