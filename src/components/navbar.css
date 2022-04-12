@@ -101,3 +101,12 @@
     display: block;
   }
 }
+
+@media screen and (max-width: 380px) {
+  .hamburger {
+    width: 28px;
+    height: 28px;
+    right: 38px;
+  }
+
+}

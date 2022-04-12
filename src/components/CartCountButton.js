@@ -27,6 +27,12 @@ const Container = styled.div`
   right: 1.5rem;
   cursor: pointer;
   z-index: 100000;
+  @media (max-width:380px) {
+    width: 25px;
+    height: 25px;
+    top: 2.6rem;
+    border-radius: 8px;
+  }
 `;
 
 const Div = styled.div`
